@@ -116,11 +116,21 @@ console.log(produtosLocalStorage)
 
 // Crud
 // Read
-const listaProdutos = document.getElementById('lista-produtos')
-// Usar o .map() para escrever no html os produtos
-// ' ' apóstrofo ou aspas simples
-// " " aspas duplas
-// ` ` crase ${variavel}
+// 0 - Colocar tudo isso em um escutador de evento / função
+// 1 - Pegar os valores digitados na tela e colocar em variaveis
+const nomeProdutoDigitado = document.getElementById("nome").value
+const precoProdutoDigitado = Number(document.getElementById("preco").value)
+const categoriaProdutoDigitado = document.getElementById("categoria").value
+
+// 2 - Criar um objeto com esses valores
+
+// 3 - Pegar os valores que estão no local storage (Transformando em JSON)
+
+// 4 - usar o .push() para colocar os valores nesse JSON
+
+// 5 - Salvar o novo JSON no local storage
+
+
 listaProdutos.innerHTML =
 produtosLocalStorage.map((produto) => `
     <article>
