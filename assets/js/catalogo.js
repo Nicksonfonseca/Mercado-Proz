@@ -131,6 +131,12 @@ const categoriaProdutoDigitado = document.getElementById("categoria").value
 // 5 - Salvar o novo JSON no local storage
 
 
+const listaProdutos = document.getElementById('lista-produtos')
+// Usar o .map() para escrever no html os produtos
+// ' ' apóstrofo ou aspas simples
+// " " aspas duplas
+// ` ` crase ${variavel}
+
 listaProdutos.innerHTML =
 produtosLocalStorage.map((produto) => `
     <article>
