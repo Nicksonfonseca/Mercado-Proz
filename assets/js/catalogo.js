@@ -111,34 +111,42 @@ localStorage.setItem("Proprietário", "Nickson")
 const proprietario = localStorage.getItem("Proprietário", "Nickson")
 console.log(`O proprietário é ${proprietario}`)
 
-const produtosLocalStorage = JSON.parse(localStorage.getItem("Produtos"))
-console.log(produtosLocalStorage)
-
 // Crud
 // Read
 // 0 - Colocar tudo isso em um escutador de evento / função
-// 1 - Pegar os valores digitados na tela e colocar em variaveis
-const nomeProdutoDigitado = document.getElementById("nome").value
-const precoProdutoDigitado = Number(document.getElementById("preco").value)
-const categoriaProdutoDigitado = document.getElementById("categoria").value
+const botao = document.getElementById('enviar')
 
-// 2 - Criar um objeto com esses valores
+if (botao) {
+    botao.addEventListener('click', () => {
+        event.preventDefault();
 
-// 3 - Pegar os valores que estão no local storage (Transformando em JSON)
+        // 1 - Pegar os valores digitados na tela e colocar em variaveis
+        const nomeProdutoDigitado = document.getElementById("nome").value
+        const precoProdutoDigitado = Number(document.getElementById("preco").value)
+        const categoriaProdutoDigitado = document.getElementById("categoria").value
 
-// 4 - usar o .push() para colocar os valores nesse JSON
+        // 2 - Criar um objeto com esses valores
+        const produtosInput = {
+            nome: nomeProdutoDigitado,
+            preco: precoProdutoDigitado,
+            categoria: categoriaProdutoDigitado
+        }
 
-// 5 - Salvar o novo JSON no local storage
+        // 3 - Pegar os valores que estão no local storage (Transformando em JSON)
+        const produtosLocalStorage = JSON.parse(localStorage.getItem("Produtos"))
+        console.log(produtosLocalStorage)
 
+        // 4 - usar o .push() para colocar os valores nesse JSON
+        produtosLocalStorage.push(produtosInput)
 
-const listaProdutos = document.getElementById('lista-produtos')
-// Usar o .map() para escrever no html os produtos
-// ' ' apóstrofo ou aspas simples
-// " " aspas duplas
-// ` ` crase ${variavel}
+        // 5 - Salvar o novo JSON no local storage
+        const produtosFinal = JSON.stringify(produtosLocalStorage)
+        localStorage.setItem("Produtos", produtosFinal)
 
-listaProdutos.innerHTML =
-produtosLocalStorage.map((produto) => `
+        // Usar o .map() para escrever no html os produtos
+        const listaProdutos = document.getElementById('lista-produtos')
+        listaProdutos.innerHTML =
+            produtosLocalStorage.map((produto) => `
     <article>
         <h3>Nome: ${produto.nome}</h3>
         <p>Preço: R$ ${produto.preco}</p>
@@ -146,3 +154,12 @@ produtosLocalStorage.map((produto) => `
         <hr>
     </article>
 `).join("")
+
+    })
+}
+
+// ' ' apóstrofo ou aspas simples
+// " " aspas duplas
+// ` ` crase ${variavel}
+
+
