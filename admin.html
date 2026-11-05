@@ -6,33 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=7">
     <title>Mercado Proz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <a href="index.html">Início</a>
-    <h1>Adminstrar Produtos</h1>
-    <form id="formCadastro">
-        <div>
-            <label for="nome">Nome do Produto</label>
-            <input type="text" id="nome" required>
-        </div>
-        <div>
-            <label for="preco">Preço do Produto</label>
-            <input type="text" id="preco" required>
-        </div>
-        <div>
-            <label for="categoria">Categoria do Produto</label>
-            <input type="text" id="categoria" required>
-        </div>
-        <button type="reset">Limpar</button>
-        <button type="submit" id="enviar">Enviar</button>
-    </form>
+    <button type="button"><a href="index.html">Inicio</a></button>
+    <h1 id="titulo">Adminstrar Produtos</h1>
+    <div>
+        <form id="formCadastro">
+            <div class="row g-3">
+                <div class="col p-1">
+                    <label for="nome">Nome do Produto</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Nome" required>
+                </div>
+                <div class="col p-1">
+                    <label for="preco">Preço do Produto</label>
+                    <input type="text" class="form-control" id="preco" placeholder="Preço" required>
+                    <div class="col p=1">
+                        <label for="categoria">Categoria do Produto</label>
+                        <input type="text" class="form-control" id="categoria" placeholder="Categoria" required>
+                    </div>
+                    <div class="p-3">
+                        <button type="reset">Limpar</button>
+                        <button type="submit" id="enviar">Enviar</button>
+                    </div>
+        </form>
+    </div>
+    <div m-10>
+        <div class="border rounded overflow-hidden">
+            <table class="table table-striped table-bordered table-hover mt-3">
+                <thead>
+                    <th class="bg-success">N°</th>
+                    <th class="bg-success">Produto</th>
+                    <th class="bg-success">Preço</th>
+                    <th class="bg-success">Categoria</th>
+                    <th class="bg-success">Ações</th>
+                </thead>
+                <tbody id="itens">
 
-    <ul id="itens">
-
-    </ul>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </section>
 
     <script src="assets/js/scriptAdmin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,9 @@
+
 // Create
+    const formCadastro = document.getElementById('formCadastro')
+    var isEditando = false
 // 0 - Colocar tudo isso em um escutador de evento / função
-const formCadastro = document.getElementById('formCadastro')
+
 
 formCadastro.onsubmit = (event) => {
     event.preventDefault()
@@ -12,7 +15,7 @@ formCadastro.onsubmit = (event) => {
     const categoriaProdutoDigitado = document.getElementById("categoria").value
 
     // 2 - Criar um objeto com esses valores
-    const produtosInput = {
+    const produto = {
         nome: nomeProdutoDigitado,
         preco: precoProdutoDigitado,
         categoria: categoriaProdutoDigitado
@@ -24,10 +27,15 @@ formCadastro.onsubmit = (event) => {
     if (!produtosLocalStorage) {
         produtosLocalStorage = []
     }
+
     // 4 - usar o .push() para colocar os valores nesse JSON
     // Eu pego a variavel q eu criei no passo 3 e
     // dou push usando a variavel do passo 2
-    produtosLocalStorage.push(produtosInput)
+    if (isEditando) {
+        produtosLocalStorage[isEditando] = produto
+    } else {
+        produtosLocalStorage.push(produto)
+    }
 
     // 5 - Salvar o novo JSON no local storage
     localStorage.setItem("Produtos", JSON.stringify(produtosLocalStorage))
@@ -41,9 +49,18 @@ const listaProdutos = document.getElementById("itens")
 // '' apóstrofo ou aspas simples
 // "" aspas duplas
 // `` crase ${variavel}
-listaProdutos.innerHTML = 
-produtosLocalStorage.map((produto, index) => `
-    <li>${index} - ${produto.nome}   <button onClick="excluirProduto(${index})">x</button></li>
+listaProdutos.innerHTML =
+    produtosLocalStorage.map((produto, index) => `
+    <tr>
+        <td>${index}</td>
+        <td>${produto.nome}</td>
+        <td>${produto.preco}</td>
+        <td>${produto.categoria}</td>
+        <td>
+        <button class="btn btn-danger btn-sm" onclick="excluirProduto(${index}">Excluir</button>
+        <button class="btn btn-warning btn-sm" onclick="editarProduto(${index}">Editar</button>
+        </td>
+    </tr>
 `).join("")
 
 function excluirProduto(index) {
@@ -53,4 +70,14 @@ function excluirProduto(index) {
     console.log(produtosLocalStorage)
     localStorage.setItem("Produtos", JSON.stringify(produtosLocalStorage))
     location.reload()
+}
+
+function editarProduto(index) {
+    console.log(produtosLocalStorage[index])
+    const produto = produtosLocalStorage[index]
+
+    document.getElementById("nome").value = produto.nome
+    document.getElementById("preco").value = produto.preco
+    document.getElementById("categoria").value = produto.categoria
+    isEditando = index
 }

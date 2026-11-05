@@ -1,0 +1,16 @@
+#titulo {
+    color: rgb(1, 92, 1);
+}
+
+body {
+    background-color: rgb(245, 245, 245);
+}
+
+form {
+    background-color: white;
+    border-radius: 20px;
+}
+
+#itens {
+    background-color: rgb(245, 245, 245);
+}
