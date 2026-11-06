@@ -73,6 +73,14 @@ header {
     gap: 16px;
 }
 
+.border.rounded.overflow-hidden {
+    overflow-x: auto !important;
+}
+
+table {
+    min-width: 600px;
+}
+
 .campo {
     display: flex;
     flex-direction: column;
