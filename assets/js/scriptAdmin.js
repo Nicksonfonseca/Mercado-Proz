@@ -1,7 +1,7 @@
 
 // Create
     const formCadastro = document.getElementById('formCadastro')
-    var isEditando = false
+    var isEditando = null
 // 0 - Colocar tudo isso em um escutador de evento / função
 
 
@@ -54,11 +54,11 @@ listaProdutos.innerHTML =
     <tr>
         <td>${index}</td>
         <td>${produto.nome}</td>
-        <td>${produto.preco}</td>
+        <td>R$${produto.preco}</td>
         <td>${produto.categoria}</td>
         <td>
-        <button class="btn btn-danger btn-sm" onclick="excluirProduto(${index}">Excluir</button>
-        <button class="btn btn-warning btn-sm" onclick="editarProduto(${index}">Editar</button>
+        <button class="btn btn-danger btn-sm" id="botaoExcluir" onClick="excluirProduto(${index})">Excluir</button>
+        <button class="btn btn-warning btn-sm" id="botaoEditar" onClick="editarProduto(${index})">Editar</button>
         </td>
     </tr>
 `).join("")

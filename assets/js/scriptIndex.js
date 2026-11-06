@@ -5,12 +5,15 @@ const listaProdutos = document.getElementById("lista-produtos")
 // '' apóstrofo ou aspas simples
 // "" aspas duplas
 // `` crase ${variavel}
-listaProdutos.innerHTML = 
-produtosLocalStorage.map((produto) => `
-    <article>
-        <h3>Nome: ${produto.nome}</h3>
-        <p>Preço: R$ ${produto.preco}</p>
-        <p>Categoria: ${produto.categoria}</p>
-    </article>
-    <hr>
+listaProdutos.innerHTML =
+    produtosLocalStorage.map((produto) => `
+    <div class="col">
+        <div class="card h-100 shadow-sm produto-card">
+            <div class="card-body"
+                <h3 class="card-title h5">${produto.nome}</h3>
+                <p class="fw-bold text-success mb-0" id="preco">R$ ${produto.preco}</p>
+                <p class="card-text text-muted" id="categoria">${produto.categoria}</p>
+            </div>
+        </div>
+    </div>
 `).join("")

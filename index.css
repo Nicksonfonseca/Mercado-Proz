@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    background-color: rgb(255, 247, 247);
+}
+
+header h1 {
+    color: white;
+}
+
+header {
+    height: 120px;
+    background-color: rgb(3, 78, 13);
+}
+
+#link {
+    background-color: rgb(3, 78, 13);
+    color: white;
+    border-color: white;
+    height: 60px;
+    width: 160px;
+}
+
+#link:hover {
+    background-color: rgb(2, 41, 7);
+}
+
+h1 {
+    color: rgb(1, 108, 1);
+    font-family: 'inter', sans-serif;
+}
+
+#lista-produtos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+#lista-produtos>.col {
+    width: auto;
+    padding: 0;
+}
+
+#lista-produtos .card {
+    height: 100%;
+    border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    #lista-produtos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    #lista-produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+#lista-produtos #preco {
+    color: green;
+}
+
+#lista-produtos #categoria {
+    display: table;
+    margin: 0 auto;
+    padding: 4px 10px;
+    width: 90px;
+    border: 1px solid #2c5771;
+    border-radius: 20px;
+    color: #1d4730;
+    background-color: #f0f7f2;
+    font-size: 0.85rem;
+}
+
+#lista-produtos .card {
+    text-align: center;
+}

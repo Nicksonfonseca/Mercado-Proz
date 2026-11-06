@@ -1,5 +1,16 @@
-#titulo {
-    color: rgb(1, 92, 1);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+header h1 {
+    color: rgb(252, 252, 252);
+}
+
+h1 {
+    color: rgb(4, 66, 4);
+}
+
+h3 {
+    color: rgb(1, 129, 1);
 }
 
 body {
@@ -11,6 +22,83 @@ form {
     border-radius: 20px;
 }
 
-#itens {
-    background-color: rgb(245, 245, 245);
+th {
+    color: white;
+}
+
+#enviar {
+    background-color: rgb(19, 150, 19);
+    color: white;
+    border: solid ;
+    border-radius: 8px;
+    font-size: large;
+    font-family: 'inter', sans-serif;
+}
+
+#enviar:hover {
+    background-color: rgba(20, 104, 20, 0.9);
+}
+
+#limpar {
+    background-color: rgb(247, 251, 247);
+    color: rgb(81, 80, 80);
+    border: solid 1px;
+    border-radius: 8px;
+    font-size: large;
+    font-family: 'inter', sans-serif;
+}
+
+#limpar:hover {
+    background-color: rgb(240, 190, 190);
+}
+
+header {
+    height: 120px;
+    background-color: rgb(3, 78, 13);
+}
+
+#botaoExcluir {
+    background-color: rgb(215, 34, 34);
+    color: white;
+}
+
+#botaoEditar {
+    background-color: rgb(19, 150, 19);
+    color: white;
+}
+
+.campos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.campo input:focus {
+    outline: none;
+    border: 2px solid #22c55e;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3);
+    background-color: #f0fff4;
+}
+
+#link {
+    background-color: rgb(3, 78, 13);
+    color: white;
+    border-color: white;
+    height: 50px;
+    width: 100px;
+}
+
+#link:hover {
+    background-color: rgb(2, 41, 7);
 }
