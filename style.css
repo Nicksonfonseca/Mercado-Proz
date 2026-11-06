@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+:root {
+    color-scheme: light;
+}
+
 
 header h1 {
     color: rgb(252, 252, 252);
@@ -15,6 +19,7 @@ h3 {
 
 body {
     background-color: rgb(245, 245, 245);
+    color: #212529;
 }
 
 form {
@@ -69,7 +74,7 @@ header {
 
 .campos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
 }
 
@@ -79,6 +84,8 @@ header {
 
 table {
     min-width: 600px;
+    --bs-table-color: #212529;
+    --bs-table-bg: #fff;
 }
 
 .campo {
@@ -90,6 +97,12 @@ table {
 .campo input {
     width: 100%;
     box-sizing: border-box;
+    background-color: #fff;
+    color: #212529;
+}
+
+.campo label {
+    color: #212529;
 }
 
 .campo input:focus {
@@ -109,4 +122,36 @@ table {
 
 #link:hover {
     background-color: rgb(2, 41, 7);
+}
+
+@media (max-width: 768px) {
+    .campos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        height: auto;
+        min-height: 120px;
+        padding: 14px 12px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    header h1 {
+        font-size: 1.35rem;
+    }
+
+    #link {
+        position: static !important;
+        width: auto;
+        height: auto;
+        margin: 0 !important;
+        padding: 8px 14px;
+    }
+
+    .campos {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
