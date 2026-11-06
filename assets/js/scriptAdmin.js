@@ -1,7 +1,6 @@
 
 // Create
     const formCadastro = document.getElementById('formCadastro')
-    var isEditando = null
 // 0 - Colocar tudo isso em um escutador de evento / função
 
 
@@ -31,8 +30,9 @@ formCadastro.onsubmit = (event) => {
     // 4 - usar o .push() para colocar os valores nesse JSON
     // Eu pego a variavel q eu criei no passo 3 e
     // dou push usando a variavel do passo 2
-    if (isEditando) {
-        produtosLocalStorage[isEditando] = produto
+    const indiceEdicao = formCadastro.dataset.indiceEdicao
+    if (indiceEdicao !== undefined) {
+        produtosLocalStorage[Number(indiceEdicao)] = produto
     } else {
         produtosLocalStorage.push(produto)
     }
@@ -79,5 +79,5 @@ function editarProduto(index) {
     document.getElementById("nome").value = produto.nome
     document.getElementById("preco").value = produto.preco
     document.getElementById("categoria").value = produto.categoria
-    isEditando = index
+    formCadastro.dataset.indiceEdicao = index
 }
