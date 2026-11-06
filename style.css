@@ -155,3 +155,15 @@ table {
         grid-template-columns: minmax(0, 1fr);
     }
 }
+
+.nome {
+    padding-left: 10px
+}
+
+#preco {
+    padding-left: 10px
+}
+
+#categoria {
+    padding-right: 10px;
+}

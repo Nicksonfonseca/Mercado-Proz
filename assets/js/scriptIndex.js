@@ -10,6 +10,7 @@ listaProdutos.innerHTML =
     <div class="col">
         <div class="card h-100 shadow-sm produto-card">
             <div class="card-body"
+                <img src="${produto.img}" class="card-img-top" alt="${produto.nome}">
                 <h3 class="card-title h5">${produto.nome}</h3>
                 <p class="fw-bold text-success mb-0" id="preco">R$ ${produto.preco}</p>
                 <p class="card-text text-muted" id="categoria">${produto.categoria}</p>

@@ -12,11 +12,14 @@ formCadastro.onsubmit = (event) => {
     const nomeProdutoDigitado = document.getElementById("nome").value
     const precoProdutoDigitado = Number(document.getElementById("preco").value)
     const categoriaProdutoDigitado = document.getElementById("categoria").value
+    const imgProdutoDigitado = document.getElementById("img").value
+    let resultado = precoProdutoDigitado.replace(".", ",")
 
     // 2 - Criar um objeto com esses valores
     const produto = {
+        img: imgProdutoDigitado,
         nome: nomeProdutoDigitado,
-        preco: precoProdutoDigitado,
+        preco: resultado.toFixed(2),
         categoria: categoriaProdutoDigitado
     }
 
@@ -31,7 +34,7 @@ formCadastro.onsubmit = (event) => {
     // Eu pego a variavel q eu criei no passo 3 e
     // dou push usando a variavel do passo 2
     const indiceEdicao = formCadastro.dataset.indiceEdicao
-    if (indiceEdicao !== undefined) {
+    if (indiceEdicao !== null) {
         produtosLocalStorage[Number(indiceEdicao)] = produto
     } else {
         produtosLocalStorage.push(produto)
@@ -57,7 +60,7 @@ listaProdutos.innerHTML =
         <td>R$${produto.preco}</td>
         <td>${produto.categoria}</td>
         <td>
-        <button class="btn btn-danger btn-sm" id="botaoExcluir" onClick="excluirProduto(${index})">Excluir</button>
+        <button class="btn btn-danger btn-sm m-2" id="botaoExcluir" onClick="excluirProduto(${index})">Excluir</button>
         <button class="btn btn-warning btn-sm" id="botaoEditar" onClick="editarProduto(${index})">Editar</button>
         </td>
     </tr>
