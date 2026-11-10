@@ -1,4 +1,8 @@
 const produtosLocalStorage = JSON.parse(localStorage.getItem("Produtos")) || []
+const formatadorMoeda = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+})
 
 const listaProdutos = document.getElementById("lista-produtos")
 listaProdutos.innerHTML = produtosLocalStorage.length
@@ -8,7 +12,7 @@ listaProdutos.innerHTML = produtosLocalStorage.length
                 ${produto.img ? `<img src="${produto.img}" class="card-img-top" alt="${produto.nome}">` : ""}
                 <div class="card-body">
                     <h3 class="card-title h5">${produto.nome}</h3>
-                    <p id="preco" class="fw-bold text-success mb-0">R$ ${produto.preco}</p>
+                    <p id="preco" class="fw-bold text-success mb-0">${formatadorMoeda.format(Number(produto.preco))}</p>
                     <p id="categoria" class="card-text text-muted">${produto.categoria}</p>
                 </div>
             </div>
@@ -25,3 +29,17 @@ const categoriasUnicas = [...new Set(categoria)]
 filtroCategoria.innerHTML += categoriasUnicas.map((categoria) => `
     <option>${categoria}</option>
 `).join("")
+
+
+filtroCategoria.addEventListener("change", () => {
+    const categoriaSelecionada = filtroCategoria.value
+    let produtosFiltrados = []
+    if (categoriaSelecionada == "Todas") {
+        produtosFiltrados = produtosLocalStorage
+    } else {
+        produtosFiltrados = produtosLocalStorage.filter((produto) =>
+        produto.categoria == categoriaSelecionada)
+    }
+
+    console.log(produtosFiltrados)
+})

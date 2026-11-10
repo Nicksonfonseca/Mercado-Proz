@@ -103,6 +103,22 @@ h1 {
     text-align: center;
     background-color: #fff;
     color: #212529;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#lista-produtos .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #lista-produtos .card {
+        transition: none;
+    }
+
+    #lista-produtos .card:hover {
+        transform: none;
+    }
 }
 
 #lista-produtos .card-body {

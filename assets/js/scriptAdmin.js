@@ -43,6 +43,10 @@ formCadastro.onsubmit = (event) => {
 }
 
 const produtosLocalStorage = JSON.parse(localStorage.getItem("Produtos")) || []
+const formatadorMoeda = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+})
 
 const listaProdutos = document.getElementById("itens")
 // Usar o .map() para escrever no html os produtos
@@ -54,7 +58,7 @@ listaProdutos.innerHTML =
     <tr>
         <td>${index}</td>
         <td>${produto.nome}</td>
-        <td>R$${produto.preco}</td>
+        <td>${formatadorMoeda.format(Number(produto.preco))}</td>
         <td>${produto.categoria}</td>
         <td>
         <button class="btn btn-danger btn-sm m-2" id="botaoExcluir" onClick="excluirProduto(${index})">Excluir</button>
