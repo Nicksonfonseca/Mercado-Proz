@@ -10,16 +10,13 @@ formCadastro.onsubmit = (event) => {
 
     // 1 - Pegar os valores digitados na tela e colocar em variaveis
     const nomeProdutoDigitado = document.getElementById("nome").value
-    const precoProdutoDigitado = Number(document.getElementById("preco").value)
+    const precoProdutoDigitado = Number(document.getElementById("preco").value.replace(",", "."))
     const categoriaProdutoDigitado = document.getElementById("categoria").value
-    const imgProdutoDigitado = document.getElementById("img").value
-    let resultado = precoProdutoDigitado.replace(".", ",")
 
     // 2 - Criar um objeto com esses valores
     const produto = {
-        img: imgProdutoDigitado,
         nome: nomeProdutoDigitado,
-        preco: resultado.toFixed(2),
+        preco: precoProdutoDigitado.toFixed(2),
         categoria: categoriaProdutoDigitado
     }
 
@@ -34,7 +31,7 @@ formCadastro.onsubmit = (event) => {
     // Eu pego a variavel q eu criei no passo 3 e
     // dou push usando a variavel do passo 2
     const indiceEdicao = formCadastro.dataset.indiceEdicao
-    if (indiceEdicao !== null) {
+    if (indiceEdicao !== undefined) {
         produtosLocalStorage[Number(indiceEdicao)] = produto
     } else {
         produtosLocalStorage.push(produto)
@@ -45,7 +42,7 @@ formCadastro.onsubmit = (event) => {
     location.reload()
 }
 
-const produtosLocalStorage = JSON.parse(localStorage.getItem("Produtos"))
+const produtosLocalStorage = JSON.parse(localStorage.getItem("Produtos")) || []
 
 const listaProdutos = document.getElementById("itens")
 // Usar o .map() para escrever no html os produtos
