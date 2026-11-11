@@ -5,8 +5,9 @@ const formatadorMoeda = new Intl.NumberFormat("pt-BR", {
 })
 
 const listaProdutos = document.getElementById("lista-produtos")
-listaProdutos.innerHTML = produtosLocalStorage.length
-    ? produtosLocalStorage.map((produto) => `
+function escreveNaTela(produtosLocalStorage) {
+    listaProdutos.innerHTML = produtosLocalStorage.length
+        ? produtosLocalStorage.map((produto) => `
         <div class="col">
             <div class="card h-100 shadow-sm produto-card">
                 ${produto.img ? `<img src="${produto.img}" class="card-img-top" alt="${produto.nome}">` : ""}
@@ -18,7 +19,10 @@ listaProdutos.innerHTML = produtosLocalStorage.length
             </div>
         </div>
     `).join("")
-    : `<div class="col-12"><div class="empty-state">Nenhum Produto Cadastrado</div></div>`
+        : `<div class="col-12"><div class="empty-state">Nenhum Produto Cadastrado</div></div>`
+}
+escreveNaTela(produtosLocalStorage)
+
 
 // Passo 1 - Pegar o elemento select do html
 const filtroCategoria = document.getElementById("filtroCategoria")
@@ -38,8 +42,9 @@ filtroCategoria.addEventListener("change", () => {
         produtosFiltrados = produtosLocalStorage
     } else {
         produtosFiltrados = produtosLocalStorage.filter((produto) =>
-        produto.categoria == categoriaSelecionada)
+            produto.categoria == categoriaSelecionada)
     }
-
+    escreveNaTela(produtosFiltrados)
     console.log(produtosFiltrados)
 })
+
