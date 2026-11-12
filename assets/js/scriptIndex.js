@@ -34,17 +34,31 @@ filtroCategoria.innerHTML += categoriasUnicas.map((categoria) => `
     <option>${categoria}</option>
 `).join("")
 
+const ordenar = document.getElementById("Ordenar")
 
-filtroCategoria.addEventListener("change", () => {
-    const categoriaSelecionada = filtroCategoria.value
-    let produtosFiltrados = []
-    if (categoriaSelecionada == "Todas") {
-        produtosFiltrados = produtosLocalStorage
-    } else {
-        produtosFiltrados = produtosLocalStorage.filter((produto) =>
-            produto.categoria == categoriaSelecionada)
+function atualizaListaProdutos() {
+    let produtosExibidos = [...produtosLocalStorage]
+
+    if (filtroCategoria.value !== "Todas") {
+        produtosExibidos = produtosExibidos.filter((produto) =>
+            produto.categoria === filtroCategoria.value)
     }
-    escreveNaTela(produtosFiltrados)
-    console.log(produtosFiltrados)
-})
 
+    if (ordenar.value === "precoMenor") {
+        produtosExibidos.sort((a, b) => Number(a.preco) - Number(b.preco))
+    } else if (ordenar.value === "precoMaior") {
+        produtosExibidos.sort((a, b) => Number(b.preco) - Number(a.preco))
+    }
+
+    escreveNaTela(produtosExibidos)
+}
+
+filtroCategoria.addEventListener("change", atualizaListaProdutos)
+ordenar.addEventListener("change", atualizaListaProdutos)
+
+const pesquisaInput = document.getElementById("pesquisa")
+addEventListener("input", () => {
+    const pesquisa = pesquisaInput.value.toLowerCase()
+    const produtosFiltrados = produtosLocalStorage.filter((produto) => produto.nome.toLowerCase().includes(pesquisa))
+    escreveNaTela(produtosFiltrados)
+})

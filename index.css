@@ -124,3 +124,12 @@ h1 {
 #lista-produtos .card-body {
     background-color: #fff;
 }
+
+#atualizar {
+    background-color: rgb(3, 78, 13);
+    color: white;
+}
+
+#atualizar:hover {
+    background-color: rgb(2, 41, 7);
+}
